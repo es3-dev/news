@@ -1,16 +1,12 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
-from .models import autor, seccion, noticias_main, noticias_aside, noticias_second 
+from .models import autor, seccion, noticia
 
 # Create your views here.
 def index(request):
-    main = noticias_main.objects.all()
-    aside = noticias_aside.objects.all()
-    other_section = noticias_second.objects.all()
+    main = noticia.objects.all()
     return render(request, 'home/index.html',{
-        'main': main,
-        'aside': aside,
-        'other_section': other_section,
+        'noticia': noticia,
     })
 
 def auth(request):
@@ -27,4 +23,4 @@ def auth(request):
                 return redirect('/')
         else:
             error = 'Credenciales incorrectas.'
-    return render(request, 'accounts/auths.html', {'error': error})
+    return render(request, 'accounts/login.html', {'error': error})
