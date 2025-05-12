@@ -1,7 +1,7 @@
 from django.contrib import admin
-from .models import autor, seccion, noticia
+from .models import author, section, new
 
 # Register your models here.
-admin.site.register(autor)
-admin.site.register(seccion)
-admin.site.register(noticia)
+admin.site.register(author)
+admin.site.register(section)
+admin.site.register(new)

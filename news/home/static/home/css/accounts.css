@@ -1,0 +1,129 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+div.container-form{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: calc(100vh - 60px);
+}
+
+.form-register{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 400px;
+    box-shadow: 0px 5px 20px #1E2F29;
+    padding: 20px;
+    border-radius: 24px;
+    gap: 10px;
+    background-color: #648374;
+}
+
+.title-form-container{
+    width: 100%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.title-form-container p.title-form{
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.25em;
+    font-weight: 600;
+    color: #E3E5D8;
+}
+
+p.msg-error{
+    font-family: 'Poppins',sans-serif;
+    font-size: 0.75em;
+    color: #E3E5D8;
+}
+
+.inputs-container{
+    width: 90%;
+    height: 60px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.inputs-container label{
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.85em;
+    font-weight: 500;
+    height: 20px;
+    color: #E3E5D8;
+}
+
+.inputs{
+    height: 40px;
+    width: 100%;
+    border-radius: 0.5em;
+    border: 1px solid #355245;
+    padding-left: 8px;
+    outline: none;
+    background-color: #648374;
+    color: #E3E5D8;
+}
+
+.inputs::placeholder{
+    color: #E3E5D8;
+    opacity: 0.4;
+}
+
+.inputs:focus{
+    outline: none;
+    border: 1px solid #1E2F29;
+    padding-left: 8px;
+    background-color: #648374;
+    color: #E3E5D8;
+}
+
+div.a-link{
+    width: 90%;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.a-link a{
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 0.75em;
+    color: #E3E5D8;
+}
+
+.button-container{
+    width: 100%;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.button-container .btn-signup{
+    padding: 0.25em 1.5em;
+    border-radius: 8px;
+    border: none;
+    background-color: #355245;
+    color: #E3E5D8;
+    font-family: "Poppins", sans-serif;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+.btn-signup:hover, .btn-signup:active{
+    background: #AFC1B6;
+    color: #355245;
+    cursor: pointer;
+}
+

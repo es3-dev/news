@@ -1,5 +1,4 @@
-{% block content %}
-{% endblock %}
+{% load static %}
 
 <header class="header">
 
@@ -28,8 +27,10 @@
         </nav>
 
         <div class="button-header-container">
+            {% if show_header_buttons %}
             <button type="button" id="button-header-login" class="login" data-url="{% url 'login' %}">Login</button>
             <button type="button" id="button-header-sign-up" class="sign-up">Sign-up</button>
+            {% endif %}
         </div>
 
     </header>

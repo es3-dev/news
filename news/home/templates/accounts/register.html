@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block title %}
-    <title>Login | News</title>
+    <title>Register | News</title>
 {% endblock title %}
 
 {% block css %}
@@ -16,22 +16,34 @@
         <form class="form-register" method="post">
             {% csrf_token %}
             <div class="title-form-container">
-                <p class="title-form">Login</p>
+                <p class="title-form">Sign Up</p>
             </div>
-            <p class="msg-error-password"></p>
+            <p class="msg-error">{{ error }}</p>
             <div class="inputs-container">
                 <label for="user">Username:</label>
                 <input class="inputs" type="text" name="username" id="user" required placeholder="robert">
+            </div>
+            <div class="inputs-container">
+                <label for="fname">First Name:</label>
+                <input class="inputs" type="text" name="first_name" id="fname" required placeholder="Roberto">
+            </div>
+            <div class="inputs-container">
+                <label for="lname">Last Name:</label>
+                <input class="inputs" type="text" name="last_name" id="lname" required placeholder="Moreno">
+            </div>
+            <div class="inputs-container">
+                <label for="email">Email:</label>
+                <input class="inputs" type="email" name="email" id="email" required placeholder="robert@news.com">
             </div>
             <div class="inputs-container">
                 <label for="pass">Password</label>
                 <input class="inputs" type="password" name="password" id="pass" required placeholder="*********">
             </div>
             <div class="a-link">
-                <a href="{% url 'register' %}">Click here if you don't have an account</a>
+                <a href="{% url 'login' %}">Click here if you have an account</a>
             </div>
             <div class="button-container">
-                <button class="btn-signup">LOGIN</button>
+                <button class="btn-signup">SIGN UP</button>
             </div>
         </form>
     </div>
