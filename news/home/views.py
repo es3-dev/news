@@ -1,14 +1,17 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from .models import author, section, new
 import re
+from django.views.decorators.http import require_POST
 
 # Create your views here.
 def index(request):
     news = new.objects.all()
+    latest_news = new.objects.order_by('-date')[:4]
     return render(request, 'home/index.html',{
         'news': news,
+        'latest_news': latest_news,
     })
 
 def validate_password(password):
@@ -27,7 +30,7 @@ def validate_password(password):
 def register(request):
     if request.method == 'GET':
         print('metodo GET')
-        return render(request, 'accounts/register.html', {'show_header_buttons': False})
+        return render(request, 'registration/register.html')
     elif request.method == 'POST':
         print('metodo POST')
         username = request.POST['username']
@@ -39,21 +42,37 @@ def register(request):
         msg_validate = validate_password(password)
         if msg_validate:
             print({'error': msg_validate})
-            return render(request, 'accounts/register.html', {'error': msg_validate, 'show_header_buttons': False})
+            return render(request, 'registration/register.html', {'error': msg_validate})
         if User.objects.filter(email=email).exists():
-            return render(request, 'accounts/register.html', {'error': 'The entered email already exists with another user', 'show_header_buttons': False})
+            return render(request, 'registration/register.html', {'error': 'The entered email already exists with another user'})
         #username=username | El primero es el parámetro de la funcion, lo que espera recibir | el segundo es el argumento que le enviamos que en este caso es la info del input
         if User.objects.filter(username=username).exists():
-            return render(request, 'accounts/register.html', {'error': 'The user already exists', 'show_header_buttons': False})
+            return render(request, 'registration/register.html', {'error': 'The user already exists'})
         user = User.objects.create_user(username, password)
         user.first_name = first_name
         user.last_name = last_name
         user.email = email
         user.save()
+        # Login automático tras registro
+        login(request, user)
         return redirect('index')
 
 
-
-
 def log(request):
-    return render(request, 'accounts/login.html', {'show_header_buttons': False})
+    if request.method == 'GET':
+        return render(request, 'registration/login.html')
+    elif request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+        user_authenticated = authenticate(request, username=username, password=password)
+        if user_authenticated is not None:
+            login(request, user_authenticated)
+            return redirect('index')
+        else:
+            return render(request, 'registration/login.html', {'error': 'User does not exist'})
+
+
+@require_POST
+def user_logout(request):
+    logout(request)
+    return redirect('index')

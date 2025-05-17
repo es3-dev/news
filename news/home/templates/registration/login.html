@@ -1,13 +1,11 @@
 {% extends 'includes/base.html' %}
 {% load static %}
 
-{% block title %}
-    <title>Login | News</title>
-{% endblock title %}
+{% block title %} Login | News {% endblock title %}
 
 {% block css %}
     <link rel="stylesheet" href="{% static 'home/css/global.css' %}">
-    <link rel="stylesheet" href="{% static 'home/css/accounts.css' %}">
+    <link rel="stylesheet" href="{% static 'home/css/registration.css' %}">
 {% endblock css %}
 
 {% block content %}
@@ -18,7 +16,7 @@
             <div class="title-form-container">
                 <p class="title-form">Login</p>
             </div>
-            <p class="msg-error-password"></p>
+            <p class="msg-error">{{ error }}</p>
             <div class="inputs-container">
                 <label for="user">Username:</label>
                 <input class="inputs" type="text" name="username" id="user" required placeholder="robert">

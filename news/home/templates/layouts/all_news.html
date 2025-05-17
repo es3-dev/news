@@ -1,0 +1,28 @@
+{% load static %}
+<section class="all-news-section">
+    <div class="header-latest-news-container">
+        <a href="" class="a-title-all-news">Todas las noticias</a>
+        <div class="search-container">
+            <input type="text" class="search" id="search-input" placeholder="Buscar noticias">
+        </div>
+    </div>
+
+    {% for item in news %}
+    <div class="card-container">
+        <div class="global-container">
+            <div class="text-container">
+                <a href="" class="title-all-news">{{ item.title }}</a>
+                <p class="content-all-news">{{ item.short_description }}</p>
+                <p class="author">Creado por: <span>{{ item.author }}</span></p>
+            </div>
+            <div class="picture-container">
+                <img src="{{ item.image.url }}" alt="">
+            </div>
+        </div>
+        <div class="other-info-container">
+            <span class="category">{{ item.section.name_section }} | {{ item.date|date:'d/m/Y' }}</span>
+        </div>
+    </div>
+    {% endfor %}
+
+</section>

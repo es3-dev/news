@@ -20,10 +20,11 @@ class new(models.Model):
     id_news = models.AutoField(primary_key=True)
     title = models.CharField(max_length=200)
     date = models.DateTimeField(auto_now_add=True)
-    short_description = models.CharField(max_length=124)
+    short_description = models.CharField(max_length=300)
     description = models.TextField()
     city = models.CharField(max_length=100)
-    image = models.ImageField(upload_to='noticias/') 
+    image = models.ImageField(upload_to='images_news/')
+    published = models.BooleanField(default=False) 
     author = models.ForeignKey(author, on_delete=models.CASCADE)
     section = models.ForeignKey(section, on_delete=models.CASCADE)
 

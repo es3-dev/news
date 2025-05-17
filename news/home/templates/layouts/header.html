@@ -9,7 +9,7 @@
         <nav class="navigation">
             <ul class="ul-navigation">
                 <li class="li-navigation">
-                    <a href="" class="a-navigation">Inicio</a>
+                    <a href="{% url 'index' %}" class="a-navigation">Inicio</a>
                 </li>
                 <li class="li-navigation">
                     <a href="" class="a-navigation">Tecnología</a>
@@ -27,9 +27,14 @@
         </nav>
 
         <div class="button-header-container">
-            {% if show_header_buttons %}
-            <button type="button" id="button-header-login" class="login" data-url="{% url 'login' %}">Login</button>
-            <button type="button" id="button-header-sign-up" class="sign-up">Sign-up</button>
+            {% if user.is_authenticated %}
+                <p class="username-header">{{ user.first_name }}</p>
+                <div>
+                    <button type="button" class="btn-leave">Leave</button>
+                </div>
+                {% else %}
+                    <button type="button" id="button-header-login" class="login btn" data-url="{% url 'login' %}">Login</button>
+                    <button type="button" id="button-header-sign-up" class="sign-up btn" data-url="{% url 'register' %}">Sign-up</button>
             {% endif %}
         </div>
 

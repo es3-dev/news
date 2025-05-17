@@ -5,9 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    {% block title %}
-        <title>News | Home</title>
-    {% endblock title %}
+    <title>{% block title %} News | Home {% endblock title %}</title>
 
     {% block css %}
         <link rel="stylesheet" href="{% static 'home/css/global.css' %}">

@@ -1,6 +1,6 @@
 {% load static %}
 
-<section class="latest-news">
+<section class="latest-news" id="latest-news-section">
 
     <div class="header-latest-news-container">
         <a href="" class="header-title-lnews">Noticias de última hora</a>
@@ -8,32 +8,36 @@
 
 
     <div class="latest-news-general-container">
-
         <div class="latest-news-container">
+            {% for noticia in latest_news|slice:"3" %}
             <div class="latest-news-card">
                 <div class="latest-picture-container">
-                    <img src="{% static 'home/images/home-water.jpeg' %}" alt="">
+                    <img src="{{ noticia.image.url }}" alt="">
                 </div>
                 <div class="latest-text-container">
-                    <a href="" class="title-lnews">Los tecno-utópicos que quieren colonizar el mar.</a>
-                    <p class="text-lnews">Durante mucho tiempo, los libertarios han considerado la vida en el océano como la próxima frontera. Durante mucho tiempo, los libertarios.</p>
+                    <a href="" class="title-lnews">{{ noticia.title }}</a>
+                    <p class="text-lnews">{{ noticia.short_description }}</p>
                     <div class="category-and-date-container">
-                        <span class="category-and-date">Home | 12/25</span>
+                        <span class="category-and-date">{{ noticia.section }} | 12/25</span>
                     </div>
                 </div>
             </div>
+            {% endfor %}
         </div> 
     
         <div class="latest-news-container">
+            {% with noticia=latest_news|slice:'3:4'|first %}
+            {% if noticia %}
             <div class="info-container">
-                <img src="{% static 'home/images/phoebe-gates.png' %}" alt="">
+                <img src="{{ noticia.image.url }}" alt="">
                 <div class="bottom-content-container">
-                    <a href="" class="title-lnews">Otra Gates entra al negocio en internet</a>
-                    <span class="category-and-date">Tecnologia | 12/25</span>
+                    <a href="" class="title-lnews">{{ noticia.title }}</a>
+                    <span class="category-and-date">{{ noticia.section.name_section }} | {{ noticia.date|date:'d/m/Y' }}</span>
                 </div>
             </div>
+            {% endif %}
+            {% endwith %}
         </div>
-
     </div>
 
 </section>

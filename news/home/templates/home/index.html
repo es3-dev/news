@@ -7,7 +7,7 @@
         <div class="text-main-container">
             <h3 class="h3-text-main">Porque detrás de cada noticia hay una historia, una verdad y un mundo que merece ser contado.</h3>
             <div class="a-main-container">
-                <a href="" class="a-main">Entérate <i class="fas fa-arrow-left"></i></a>
+                <a href="#latest-news-section" class="a-main">Entérate <i class="fas fa-arrow-left"></i></a>
             </div>
         </div>
 
@@ -23,20 +23,6 @@
 
     </main>
     
-    <section class="section-container-cards">
-
-        <div class="card-container">
-            <div class="picture-container">
-                <img src="{% static 'home/images/pilot.jpg' %}" alt="Imagen">
-            </div>
-            <div class="text-card-container">
-                <a class="a-title-card">Cómo concentrarse como un piloto de Fórmula 1</a>
-                <p class="p-text-card">Te decimos como las técnicas que utilizan los pilotos para optimizar su rendimiento.</p>
-            </div>
-        </div>
-
-    </section>
-
     {% include 'layouts/latest_news.html' %}
-
+    {% include 'layouts/all_news.html' %}
 {% endblock %}
