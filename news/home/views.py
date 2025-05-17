@@ -27,7 +27,7 @@ def validate_password(password):
         return 'Must include at least one special character (@, $, !, %, *, ?, &)'
     return None #Esto nos indica que la contraseña cumple todos los criterios.
 
-def register(request):
+def user_register(request):
     if request.method == 'GET':
         print('metodo GET')
         return render(request, 'registration/register.html')
@@ -58,7 +58,7 @@ def register(request):
         return redirect('index')
 
 
-def log(request):
+def user_login(request):
     if request.method == 'GET':
         return render(request, 'registration/login.html')
     elif request.method == 'POST':
@@ -76,3 +76,18 @@ def log(request):
 def user_logout(request):
     logout(request)
     return redirect('index')
+
+def technology(request):
+    return render(request, 'technology/technology.html')
+
+def science(request):
+    return render(request, 'science/science.html')
+
+def economy(request):
+    return render(request, 'economy/economy.html')
+
+def entertainment(request):
+    return render(request, 'entertainment/entertainment.html')
+
+def politics(request):
+    return render(request, 'politics/politics.html')

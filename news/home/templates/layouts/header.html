@@ -3,25 +3,25 @@
 <header class="header">
 
         <div class="title-container">
-            <a href="/" class="title-news">NEWS</a>
+            <a href="{% url 'index' %}" class="title-news">NEWS</a>
         </div>
 
         <nav class="navigation">
             <ul class="ul-navigation">
                 <li class="li-navigation">
-                    <a href="{% url 'index' %}" class="a-navigation">Inicio</a>
+                    <a href="{% url 'science' %}" class="a-navigation">Ciencia</a>
                 </li>
                 <li class="li-navigation">
-                    <a href="" class="a-navigation">Tecnología</a>
+                    <a href="{% url 'technology' %}" class="a-navigation">Tecnología</a>
                 </li>
                 <li class="li-navigation">
-                    <a href="" class="a-navigation">Economía</a>
+                    <a href="{% url 'economy' %}" class="a-navigation">Economía</a>
                 </li>
                 <li class="li-navigation">
-                    <a href="" class="a-navigation">Entretenimiento</a>
+                    <a href="{% url 'entertainment' %}" class="a-navigation">Entretenimiento</a>
                 </li>
                 <li class="li-navigation">
-                    <a href="" class="a-navigation">Clima</a>
+                    <a href="{% url 'politics' %}" class="a-navigation">Politica</a>
                 </li>
             </ul>
         </nav>
