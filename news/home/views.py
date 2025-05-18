@@ -6,13 +6,6 @@ import re
 from django.views.decorators.http import require_POST
 
 # Create your views here.
-def index(request):
-    news = new.objects.all()
-    latest_news = new.objects.order_by('-date')[:4]
-    return render(request, 'home/index.html',{
-        'news': news,
-        'latest_news': latest_news,
-    })
 
 def validate_password(password):
     if len(password) < 8:
@@ -77,17 +70,35 @@ def user_logout(request):
     logout(request)
     return redirect('index')
 
+def index(request):
+    news = new.objects.all()
+    latest_news = new.objects.filter(published=True).order_by('-date')[:4]
+    return render(request, 'home/index.html',{
+        'news': news,
+        'latest_news': latest_news,
+    })
+
 def technology(request):
-    return render(request, 'technology/technology.html')
+    technology_section = section.objects.filter(name_section__iexact='Tecnologia').first()
+    technology_news = new.objects.filter(section=technology_section, published=True).order_by('-date')
+    return render(request, 'technology/technology.html', {'news': technology_news})
 
 def science(request):
-    return render(request, 'science/science.html')
+    science_section = section.objects.filter(name_section__iexact='Ciencia').first()
+    science_news = new.objects.filter(section=science_section, published=True).order_by('-date')
+    return render(request, 'science/science.html', {'news': science_news})
 
 def economy(request):
-    return render(request, 'economy/economy.html')
+    economy_section = section.objects.filter(name_section__iexact='Economia').first()
+    economy_news = new.objects.filter(section=economy_section, published=True).order_by('-date')
+    return render(request, 'economy/economy.html', {'news': economy_news})
 
 def entertainment(request):
-    return render(request, 'entertainment/entertainment.html')
+    entertainment_section = section.objects.filter(name_section__iexact='Entretenimiento').first()
+    entertainment_news = new.objects.filter(section=entertainment_section, published=True).order_by('-date')
+    return render(request, 'entertainment/entertainment.html', {'news': entertainment_news})
 
 def politics(request):
-    return render(request, 'politics/politics.html')
+    politics_section = section.objects.filter(name_section__iexact='Politica').first()
+    politics_news = new.objects.filter(section=politics_section, published=True).order_by('-date')
+    return render(request, 'politics/politics.html', {'news': politics_news})

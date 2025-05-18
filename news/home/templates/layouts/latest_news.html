@@ -9,18 +9,18 @@
 
     <div class="latest-news-general-container">
         <div class="latest-news-container">
-            {% for noticia in latest_news|slice:"3" %}
+            {% for last_news in latest_news|slice:"3" %}
             <div class="latest-news-card">
                 <div class="latest-picture-container">
-                    <img src="{{ noticia.image.url }}" alt="">
+                    <img src="{{ last_news.image.url }}" alt="">
                 </div>
                 <div class="latest-text-container">
                     <div class="text-content">
-                            <a href="" class="title-lnews">{{ noticia.title }}</a>
-                            <p class="text-lnews">{{ noticia.short_description }}</p>
+                            <a href="" class="title-lnews">{{ last_news.title }}</a>
+                            <p class="text-lnews">{{ last_news.short_description }}</p>
                     </div>
                     <div class="category-and-date-container">
-                        <span class="category-and-date">{{ noticia.section }} | 12/25</span>
+                        <span class="category-and-date">{{ last_news.section }} | {{ last_news.date|date:'d/m/Y' }}</span>
                     </div>
                 </div>
             </div>
@@ -28,13 +28,13 @@
         </div> 
     
         <div class="latest-news-container">
-            {% with noticia=latest_news|slice:'3:4'|first %}
-            {% if noticia %}
+            {% with last_news=latest_news|slice:'3:4'|first %}
+            {% if last_news %}
             <div class="info-container">
-                <img src="{{ noticia.image.url }}" alt="">
+                <img src="{{ last_news.image.url }}" alt="">
                 <div class="bottom-content-container">
-                    <a href="" class="title-lnews">{{ noticia.title }}</a>
-                    <span class="category-and-date">{{ noticia.section.name_section }} | {{ noticia.date|date:'d/m/Y' }}</span>
+                    <a href="" class="title-lnews">{{ last_news.title }}</a>
+                    <span class="category-and-date">{{ last_news.section.name_section }} | {{ last_news.date|date:'d/m/Y' }}</span>
                 </div>
             </div>
             {% endif %}
